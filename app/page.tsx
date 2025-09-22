@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import PersistentDrawerLeft from "./(pages)/home/page";
 import theme from "./theme/theme";
