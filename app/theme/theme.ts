@@ -4,9 +4,19 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     mode: "light",
+
+    // Keep MUI defaults safe
     text: {
       primary: "#000000",
       secondary: "#444444",
+    },
+    background: {
+      default: "#ffffff",
+      paper: "#f9fafb",
+    },
+
+    // Add your own colors here
+    custom: {
       white: "#ffffff",
       iceBlue: "#d0d5db",
       gold: "#fbbf24",
@@ -22,28 +32,28 @@ const theme = createTheme({
       darkGray: "#4b5666",
       darkBlue: "#101828",
       black: "#0f0f0f",
-    },
-    border: {
-      iceBlue: "#e5e7eb",
-      lightBlue: "#e1e2e2",
-      orange: "#ff9900",
-      green: "#00c84f",
-      blue: "#2d7fff",
-      red: "#fd2a36",
-      bluegray: "#1f2938",
-    },
-    background: {
-      default: "#ffffff",
-      paper: "#f9fafb",
-      white: "#ffffff",
-      lightYellow: "#fdf8c2",
-      lightGreen: "#ddfae7",
-      orange: "#ff9900",
-      darkGreen: "#00a741",
-      red: "#e60013",
-      blue: "#1a5ffa",
-      blueGray: "#1e2939",
-      darkBlue: "#101828",
+
+      border: {
+        iceBlue: "#e5e7eb",
+        lightBlue: "#e1e2e2",
+        orange: "#ff9900",
+        green: "#00c84f",
+        blue: "#2d7fff",
+        red: "#fd2a36",
+        bluegray: "#1f2938",
+      },
+
+      background: {
+        white: "#ffffff",
+        lightYellow: "#fdf8c2",
+        lightGreen: "#ddfae7",
+        orange: "#ff9900",
+        darkGreen: "#00a741",
+        red: "#e60013",
+        blue: "#1a5ffa",
+        blueGray: "#1e2939",
+        darkBlue: "#101828",
+      },
     },
   },
   typography: {
