@@ -1,13 +1,12 @@
 "use client";
-// theme/theme.ts
-
 import { createTheme } from "@mui/material/styles";
 
-// Create a theme instance
 const theme = createTheme({
   palette: {
-    mode: "light", // you can change to 'dark'
+    mode: "light",
     text: {
+      primary: "#000000",
+      secondary: "#444444",
       white: "#ffffff",
       iceBlue: "#d0d5db",
       gold: "#fbbf24",
@@ -34,6 +33,8 @@ const theme = createTheme({
       bluegray: "#1f2938",
     },
     background: {
+      default: "#ffffff",
+      paper: "#f9fafb",
       white: "#ffffff",
       lightYellow: "#fdf8c2",
       lightGreen: "#ddfae7",
