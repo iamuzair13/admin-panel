@@ -33,13 +33,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-import Navigation from "@/app/components/navigation";
 import Image from "next/image";
-import Profile from "../../profile/page";
-import Details from "../../details/page";
 import Booking from "../../booking/page";
+import Details from "../../details/page";
+import Profile from "../../profile/page";
 import Reports from "../../reports/page";
-
+import Dashboard from "../../dashboard/page";
 
 
 const drawerWidth = 240;
@@ -104,7 +103,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function DriverDashboard() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -154,28 +153,28 @@ const[page, setPage] = React.useState("Dashboard")
         open={open}
       >
         <DrawerHeader
-          sx={{
-            backgroundColor: "background.darkBlue",
+          sx={(theme) => ({
+            backgroundColor: theme.palette.custom.background.darkBlue,
             display: "flex",
             justifyContent: "space-between",
-            borderBottom: "0.5px solid darkGray",
-          }}
+            borderBottom: `0.5px solid ${theme.palette.custom.darkGray}`,
+          })}
         >
           <Box
-            sx={{
+            sx={(theme) => ({
               display: "flex",
               flexDirection: "row",
-              color: "text.white",
+              color: theme.palette.custom.white,
               alignItems: "center",
               gap: "10px",
-            }}
+            })}
           >
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "background.orange",
+                backgroundColor: theme.palette.custom.background.orange,
                 width: "30px",
                 height: "30px",
                 borderRadius: "10px",
@@ -187,27 +186,30 @@ const[page, setPage] = React.useState("Dashboard")
             <Box>
               <Typography
                 sx={{
-                  color: "text.white",
+                  color: theme.palette.custom.white,
                   fontFamily: "system-ui",
                   fontSize: "16px",
                 }}
                 variant="h4"
               >
-                Admin Portal
+                Driver Portal
               </Typography>
               <Typography
                 sx={{
-                  color: "text.gray",
+                  color: theme.palette.custom.gray,
                   fontFamily: "system-ui",
                   fontSize: "12px",
                 }}
                 variant="h4"
               >
-                ADMIN
+                Driver
               </Typography>
             </Box>
           </Box>
-          <IconButton onClick={handleDrawerClose} sx={{ color: "text.orange" }}>
+          <IconButton
+            onClick={handleDrawerClose}
+            sx={{ color: theme.palette.custom.orange }}
+          >
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
@@ -220,13 +222,13 @@ const[page, setPage] = React.useState("Dashboard")
           sx={{
             display: "flex",
             flexDirection: "row",
-            color: "text.white",
+            color: theme.palette.custom.white,
             alignItems: "center",
             gap: "10px",
-            backgroundColor: "background.darkBlue",
+            backgroundColor: theme.palette.custom.background.darkBlue,
             height: "100px",
             borderRadius: "0px",
-            borderBottom: "1px solid darkGray",
+            borderBottom: `1px solid ${theme.palette.custom.darkGray}`,
           }}
         >
           <Box
@@ -234,7 +236,7 @@ const[page, setPage] = React.useState("Dashboard")
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "background.orange",
+              backgroundColor: theme.palette.custom.background.orange,
               width: "30px",
               height: "30px",
               borderRadius: "50%",
@@ -262,17 +264,17 @@ const[page, setPage] = React.useState("Dashboard")
               }}
               variant="h4"
             >
-              Admin Name
+              Driver Name
             </Typography>
             <Typography
               sx={{
-                color: "text.gray",
+                color: theme.palette.custom.gray,
                 fontFamily: "system-ui",
                 fontSize: "12px",
               }}
               variant="h4"
             >
-              admin@gmail.com
+              driver@gmail.com
             </Typography>
           </Box>
         </Box>
@@ -280,7 +282,7 @@ const[page, setPage] = React.useState("Dashboard")
         <Paper
           sx={{
             height: "100%",
-            backgroundColor: "background.darkBlue",
+            backgroundColor: theme.palette.custom.background.darkBlue,
             color: "text.white",
             borderRadius: "0px",
           }}
@@ -288,11 +290,11 @@ const[page, setPage] = React.useState("Dashboard")
           <MenuList sx={{}}>
             <MenuItem
               onClick={() => {
-                setPage("home");
+                setPage("dashboard");
               }}
               sx={{
                 ":hover": {
-                  backgroundColor: "background.blueGray",
+                  backgroundColor: theme.palette.custom.background.blueGray,
                 },
                 width: "80%",
                 padding: "6px",
@@ -304,7 +306,9 @@ const[page, setPage] = React.useState("Dashboard")
               <ListItemIcon>
                 <LuLayoutDashboard style={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText
+              sx={{color : theme.palette.custom.white}}
+              >Dashboard</ListItemText>
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -312,7 +316,7 @@ const[page, setPage] = React.useState("Dashboard")
               }}
               sx={{
                 ":hover": {
-                  backgroundColor: "background.blueGray",
+                  backgroundColor: theme.palette.custom.background.blueGray,
                 },
                 width: "80%",
                 padding: "6px",
@@ -324,7 +328,9 @@ const[page, setPage] = React.useState("Dashboard")
               <ListItemIcon>
                 <CgProfile style={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText>Profile</ListItemText>
+              <ListItemText
+              sx={{color : theme.palette.custom.white}}
+              >Profile</ListItemText>
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -332,7 +338,7 @@ const[page, setPage] = React.useState("Dashboard")
               }}
               sx={{
                 ":hover": {
-                  backgroundColor: "background.blueGray",
+                  backgroundColor: theme.palette.custom.background.blueGray,
                 },
                 width: "80%",
                 padding: "6px",
@@ -344,7 +350,9 @@ const[page, setPage] = React.useState("Dashboard")
               <ListItemIcon>
                 <TbListDetails style={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText>Details</ListItemText>
+              <ListItemText
+              sx={{color : theme.palette.custom.white}}
+              >Details</ListItemText>
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -352,7 +360,7 @@ const[page, setPage] = React.useState("Dashboard")
               }}
               sx={{
                 ":hover": {
-                  backgroundColor: "background.blueGray",
+                  backgroundColor: theme.palette.custom.background.blueGray,
                 },
                 width: "80%",
                 padding: "6px",
@@ -364,7 +372,9 @@ const[page, setPage] = React.useState("Dashboard")
               <ListItemIcon>
                 <TbReportSearch style={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText>Reports</ListItemText>
+              <ListItemText
+              sx={{color : theme.palette.custom.white}}
+              >Reports</ListItemText>
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -372,7 +382,7 @@ const[page, setPage] = React.useState("Dashboard")
               }}
               sx={{
                 ":hover": {
-                  backgroundColor: "background.blueGray",
+                  backgroundColor: theme.palette.custom.background.blueGray,
                 },
                 width: "80%",
                 padding: "6px",
@@ -384,7 +394,9 @@ const[page, setPage] = React.useState("Dashboard")
               <ListItemIcon>
                 <FaRegCalendar style={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText>Booking</ListItemText>
+              <ListItemText
+              sx={{color : theme.palette.custom.white}}
+              >Booking</ListItemText>
             </MenuItem>
            
             <MenuItem
@@ -392,7 +404,7 @@ const[page, setPage] = React.useState("Dashboard")
               href="/"
               sx={{
                 ":hover": {
-                  backgroundColor: "background.blueGray",
+                  backgroundColor: theme.palette.custom.background.blueGray,
                 },
                 width: "80%",
                 padding: "6px",
@@ -404,18 +416,20 @@ const[page, setPage] = React.useState("Dashboard")
               <ListItemIcon>
                 <HiOutlineUsers style={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText>Driver</ListItemText>
+              <ListItemText
+              sx={{color : theme.palette.custom.white}}
+              >Admin</ListItemText>
             </MenuItem>
           </MenuList>
         </Paper>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        {page == "home" && <Typography> Dashboard </Typography>}
-        {page == "profile" && <Profile/>}
-        {page == "details" && <Details/>}
-        {page == "bookings" && <Booking/>}
-        {page == "reports" && <Reports/>}
+        {page == "dashboard" && <Dashboard/>}
+        {page == "profile" && <Profile />}
+        {page == "details" && <Details />}
+        {page == "bookings" && <Booking />}
+        {page == "reports" && <Reports />}
       </Main>
     </Box>
   );
