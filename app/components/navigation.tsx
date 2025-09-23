@@ -7,9 +7,7 @@ import {
   ListItemText,
   Paper,
 } from "@mui/material";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PersonIcon from "@mui/icons-material/Person";
-import AssessmentIcon from "@mui/icons-material/Assessment";
+
 import { TbListDetails, TbReportSearch } from "react-icons/tb";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";

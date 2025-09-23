@@ -3,7 +3,7 @@
 import BasicInfo from "@/app/components/profile/basicInfo";
 import Emergency from "@/app/components/profile/emergency";
 import Vahicle from "@/app/components/profile/vahicle";
-import { lightTheme, darkTheme } from "@/app/theme/theme";
+import { lightTheme } from "@/app/theme/theme";
 
 import { Button, Typography } from "@mui/material";
 import { Box, width } from "@mui/system";

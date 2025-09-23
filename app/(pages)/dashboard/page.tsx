@@ -9,7 +9,7 @@ import MyChart from "@/app/components/chart";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaArrowRightLong, FaLocationArrow } from "react-icons/fa6";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
-import { lightTheme, darkTheme } from "@/app/theme/theme";
+import { lightTheme } from "@/app/theme/theme";
 // import ThemeToggleButton from "@/app/components/toggleButton";
 
 export default function Dashboard(){

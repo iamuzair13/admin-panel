@@ -8,7 +8,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -21,9 +20,7 @@ import {MenuList,
   ListItemText,
   Paper,
 } from "@mui/material";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PersonIcon from "@mui/icons-material/Person";
-import AssessmentIcon from "@mui/icons-material/Assessment";
+
 import { TbListDetails, TbReportSearch } from "react-icons/tb";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
@@ -33,7 +30,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-import Navigation from "@/app/components/navigation";
 import Image from "next/image";
 import Booking from "../booking/page";
 import Details from "../details/page";
