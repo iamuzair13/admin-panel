@@ -5,11 +5,12 @@ import { IoCarSportOutline } from "react-icons/io5";
 import { IoIosTrendingUp } from "react-icons/io";
 import { IoIosTrendingDown } from "react-icons/io";
 import { LuDollarSign } from "react-icons/lu";
-import MyChart from "@/app/components/chart";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaArrowRightLong, FaLocationArrow } from "react-icons/fa6";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { lightTheme } from "@/app/theme/theme";
+import { MyChart } from "@/app/components/chart";
+
 // import ThemeToggleButton from "@/app/components/toggleButton";
 
 export default function Dashboard(){
@@ -83,7 +84,6 @@ export default function Dashboard(){
         >
           {overview.map((item, index) => {
             return (
-              <>
                 <Box
                   key={index}
                   sx={{
@@ -140,7 +140,6 @@ export default function Dashboard(){
                     </Typography>
                   </Box>
                 </Box>
-              </>
             );
           })}
         </Box>
@@ -323,8 +322,9 @@ export default function Dashboard(){
                     }}
                   >
                     $45
+                  </Typography>
                     <Typography
-                      variant="h4"
+                      variant="h6"
                       sx={{
                         fontSize: "12px",
                         fontWeight: "500",
@@ -337,7 +337,6 @@ export default function Dashboard(){
                     >
                       Completed
                     </Typography>
-                  </Typography>
                 </Box>
               </Box>
             </Box>

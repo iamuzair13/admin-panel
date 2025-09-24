@@ -2,6 +2,7 @@
 
 import BasicInfo from "@/app/components/profile/basicInfo";
 import Emergency from "@/app/components/profile/emergency";
+import Settings from "@/app/components/profile/settings";
 import Vahicle from "@/app/components/profile/vahicle";
 import { lightTheme } from "@/app/theme/theme";
 
@@ -253,7 +254,7 @@ export default function Profile() {
           {adminInfo == "basic" && <BasicInfo />}
           {adminInfo == "vahicle" && <Vahicle/>}
           {adminInfo == "emergency" && <Emergency/>}
-          {adminInfo == "settings" && <Typography>settings</Typography>}
+          {adminInfo == "settings" && <Settings/>}
         </Box>
       </Box>
     </Box>
