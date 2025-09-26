@@ -1,32 +1,27 @@
+import { lightTheme } from "@/app/theme/theme";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { lightTheme } from "../../theme/theme";
+import { DataEntry } from "./transaction";
 
-interface ItemData {
-  count: string[];
-  color?: string | ((value: string) => string);
-}
-
-interface Section {
-  title: string;
-  items: ItemData | string[];
-}
-
-export interface DataEntry {
-  [key: string]: Section;
-}
-
-export default function Transactions() {
-  const data: DataEntry[] = [
+export default function Detailed(){
+     const data: DataEntry[] = [
     {
       period: {
-        title: "Period",
+        title: "Date",
         items: ["Jan", "Feb", "Mar"],
       },
     },
     {
+      type: {
+        title: "Type",
+        items: {
+          count: ["Trip Earning", "Trip Earning", "Trip Earning"],
+        },
+      },
+    },
+    {
       credit: {
-        title: "Total Credit",
+        title: "Credit",
         items: {
           count: ["123", "345", "467"],
           color: lightTheme.palette.custom.green,
@@ -35,51 +30,49 @@ export default function Transactions() {
     },
     {
       debit: {
-        title: "Total Debit",
+        title: "Debit",
         items: {
           count: ["123", "345", "467"],
-          color: lightTheme.palette.custom.red,
+          color: lightTheme.palette.custom.green,
         },
       },
     },
     {
       balance: {
-        title: "Balance",
+        title: "Note",
         items: {
-          count: ["123", "-345", "467"],
-          color: (value: string) =>
-            Number(value) > 0
-              ? lightTheme.palette.custom.green
-              : lightTheme.palette.custom.red,
+          count: ["start -> end",],
+          
         },
       },
     },
   ];
-
-  return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "50px",
-        }}
-      >
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: "16px",
-            fontWeight: "400",
-            lineHeight: "16px",
-          }}
-        >
-          Monthly Summary
-        </Typography>
+    return (
+      <Box>
         <Box
           sx={{
             display: "flex",
-            width: "100%",
             justifyContent: "space-between",
+          }}
+        >
+          <Typography>Detailed Transaction List</Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              paddingRight: "200px",
+            }}
+          ></Box>
+        </Box>
+        <Box
+          sx={{
+            border: `1px solid ${lightTheme.palette.custom.iceBlue}`,
+            padding: "10px 20px",
+            borderRadius: "10px",
+            backgroundColor: lightTheme.palette.background.default,
+            display: "flex",
+            //   flexDirection: "column",
+            gap: "50px",
           }}
         >
           {data.map((item, index) => {
@@ -140,6 +133,5 @@ export default function Transactions() {
           })}
         </Box>
       </Box>
-    </Box>
-  );
+    );
 }

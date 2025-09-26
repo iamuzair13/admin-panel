@@ -6,12 +6,9 @@ import { IoIosTrendingUp, IoMdAdd } from "react-icons/io";
 import { IoIosTrendingDown } from "react-icons/io";
 import { LuDollarSign } from "react-icons/lu";
 
-import { FaCalendarAlt, FaRegEdit } from "react-icons/fa";
-import { FaArrowRightLong, FaLocationArrow } from "react-icons/fa6";
-import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+
 import { lightTheme } from "@/app/theme/theme";
 import { BsDownload } from "react-icons/bs";
-import CustomizedMenus from "@/app/components/dropdown";
 import Dropdown from "@/app/components/dropdown";
 // import ThemeToggleButton from "@/app/components/toggleButton";
 

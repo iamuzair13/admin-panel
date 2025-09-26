@@ -15,6 +15,8 @@ import Dropdown from "@/app/components/dropdown";
 import { useState } from "react";
 import Transactions from "@/app/components/summary/transaction";
 import Charts from "@/app/components/summary/barcharts";
+import { RenderBarChart } from "@/app/components/chart";
+import Detailed from "@/app/components/summary/detailed";
 // import ThemeToggleButton from "@/app/components/toggleButton";
 
 export default function Reports(){
@@ -39,13 +41,17 @@ export default function Reports(){
     {
       text: "Total Credit",
       count: "$15240",
-      icon: <LuDollarSign style={{ color: lightTheme.palette.custom.green }} />,
+      icon: (
+        <IoIosTrendingUp style={{ color: lightTheme.palette.custom.green }} />
+      ),
       color: `${lightTheme.palette.custom.green}`,
     },
     {
       text: "Total Debit",
       count: "$8760",
-      icon: <LuDollarSign style={{ color: lightTheme.palette.custom.red }} />,
+      icon: (
+        <IoIosTrendingDown style={{ color: lightTheme.palette.custom.red }} />
+      ),
       color: `${lightTheme.palette.custom.red}`,
     },
     {
@@ -54,8 +60,7 @@ export default function Reports(){
       icon: <LuDollarSign style={{ color: lightTheme.palette.custom.gold }} />,
       color: `${lightTheme.palette.custom.gold}`,
     },
-
-]; 
+  ]; 
  const tabOptions1 = [
    { value: "tab1", label: "Weekly" },
    { value: "tab2", label: "Monthly" },
@@ -66,6 +71,9 @@ export default function Reports(){
    { value: "tab2", label: "Trip Earning" },
    { value: "tab3", label: "Fuel Expense" },
  ];
+
+
+ 
 const handleDropdownChange = (value: string) => {
   console.log("Selected value:", value);
 };
@@ -148,7 +156,66 @@ const handleDropdownChange = (value: string) => {
         </Box>
 
         {/* //////////////////////////////////////////////////////////////////////// */}
-
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "start",
+            gap: "20px",
+          }}
+        >
+          {overview.map((item, index) => {
+            return (
+              <Box
+                key={index}
+                sx={{
+                  border: `1px solid ${lightTheme.palette.custom.blueGray}`,
+                  backgroundColor: lightTheme.palette.background.default,
+                  borderLeft: `5px solid ${item.color}`,
+                  width: "33%",
+                  borderRadius: "10px",
+                  padding: "30px 20px",
+                  gap: "15px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "start",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <Box>{item.icon}</Box>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: "14px",
+                      fontWeight: "500",
+                      lineHeight: "20px",
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: "24px",
+                      fontWeight: "700",
+                      lineHeight: "32px",
+                    }}
+                  >
+                    {item.count}
+                  </Typography>
+                </Box>
+              </Box>
+            );
+          })}
+        </Box>
         {/* //////////////////////////////////////////////////////////////////////// */}
         <Box
           sx={{
@@ -172,43 +239,42 @@ const handleDropdownChange = (value: string) => {
             >
               {dDriveroverview.map((item, index) => {
                 return (
-                 
+                  <Box
+                    key={index}
+                    sx={{
+                      backgroundColor: lightTheme.palette.background.default,
+                      width: "22%",
+                      borderRadius: "10px",
+                      padding: "10px 20px",
+                      gap: "15px",
+                      display: "flex",
+                      flexDirection: "column",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setAdminInfo(item.click);
+                    }}
+                  >
                     <Box
-                      key={index}
                       sx={{
-                        backgroundColor: lightTheme.palette.background.default,
-                        width: "22%",
-                        borderRadius: "10px",
-                        padding: "10px 20px",
-                        gap: "15px",
                         display: "flex",
-                        flexDirection: "column",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        setAdminInfo(item.click);
+                        justifyContent: "start",
+                        alignItems: "center",
+                        gap: "10px",
                       }}
                     >
-                      <Box
+                      <Typography
+                        variant="h4"
                         sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                          gap: "10px",
+                          fontSize: "14px",
+                          fontWeight: "500",
+                          lineHeight: "20px",
                         }}
                       >
-                        <Typography
-                          variant="h4"
-                          sx={{
-                            fontSize: "14px",
-                            fontWeight: "500",
-                            lineHeight: "20px",
-                          }}
-                        >
-                          {item.text}
-                        </Typography>
-                      </Box>
+                        {item.text}
+                      </Typography>
                     </Box>
+                  </Box>
                 );
               })}
             </Box>
@@ -225,9 +291,9 @@ const handleDropdownChange = (value: string) => {
               cursor: "pointer",
             }}
           >
-            {adminInfo == "summary" && <Transactions/>}
-            {adminInfo == "charts" && <Charts/>}
-            {adminInfo == "detailed" && <Typography>c</Typography>}
+            {adminInfo == "summary" && <Transactions />}
+            {adminInfo == "charts" && <Charts />}
+            {adminInfo == "detailed" && <Detailed />}
           </Box>
         </Box>
       </Box>

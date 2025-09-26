@@ -1,4 +1,17 @@
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+  Pie,
+  PieChart,
+} from "recharts";
+
 
 const monthdata = [
   { name: "Jan", uv: -1500, pv: 150, amt: 300 },
@@ -14,7 +27,10 @@ const weekData = [
   { name: "Week 4", uv: 300, pv: 800, amt: 500 },
 ];
 
-const data = [{name: 'Page A', uv: 400, pv: 2400, amt: 2400}, ];
+const data = [
+  { name: "Page A", Credit: 400, Debit: 2400, amt: 2400 },
+  { name: "Page A", Credit: 400, Debit: 2400, amt: 2400 },
+];
 
 
 export const MyChart = () => (
@@ -62,14 +78,47 @@ export const MyChart = () => (
   </LineChart>
 );
 
-export const renderBarChart = (
+export const RenderBarChart = () => (
   <BarChart width={600} height={300} data={data}>
     <XAxis dataKey="name" stroke="#8884d8" />
     <YAxis />
-    <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-    <Legend width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} />
+    <Tooltip wrapperStyle={{ width: 100, backgroundColor: "#ccc" }} />
+    <Legend
+      width={100}
+      wrapperStyle={{
+        top: 40,
+        right: 20,
+        backgroundColor: "#f5f5f5",
+        border: "1px solid #d5d5d5",
+        borderRadius: 3,
+        lineHeight: "40px",
+      }}
+    />
     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-    <Bar dataKey="uv" fill="#8884d8" barSize={30} />
+    <Bar dataKey="Credit" fill="green" barSize={30} />
+    <Bar dataKey="Debit" fill="red" barSize={30} />
   </BarChart>
 );
 
+
+
+
+export const CircleChart = () => (
+
+<PieChart width={400} height={400}>
+<Pie
+  activeShape={{
+    fill: 'red',
+  }}
+  data={[
+    { name: 'Trip Earning', uv: 590 },
+    { name: 'Fuel Expense', uv: 590 },
+    { name: 'Adjustments', uv: 200 },
+    { name: 'Maintainance', uv: 88 },
+    { name: 'Total Expense', uv: 68 },
+  ]}
+  dataKey="uv"
+/>
+<Tooltip defaultIndex={2} />
+</PieChart>
+)
