@@ -31,6 +31,7 @@ export const lightTheme = createTheme({
       darkGray: "#4b5666",
       darkBlue: "#101828",
       black: "#0f0f0f",
+      purple:"#ad46ff",
       border: {
         iceBlue: "#e5e7eb",
         lightBlue: "#e1e2e2",

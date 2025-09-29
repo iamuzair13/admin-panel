@@ -1,12 +1,17 @@
 "use client";
 
 import { Box, Button, Typography } from "@mui/material";
-import { IoMdAdd } from "react-icons/io";
+import { IoMdAdd, IoMdCash, IoMdPin } from "react-icons/io";
 import { lightTheme } from "@/app/theme/theme";
 import { RiCalendarScheduleLine } from "react-icons/ri";
-import { FaLocationArrow } from "react-icons/fa6";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import { FaLocationArrow, FaRegClock } from "react-icons/fa6";
+import { MdCheckBoxOutlineBlank, MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { useState } from "react";
+import { start } from "repl";
+import { Call, CreditCard, LocationCity, Payment, Person, Phone, PhoneAndroid, Pin } from "@mui/icons-material";
+import { IoCalendarNumber } from "react-icons/io5";
+import { CiCalendar } from "react-icons/ci";
+import { BsPaypal } from "react-icons/bs";
 
 export default function Booking() {
   const [tripInfo, setTripInfo] = useState("allTrips");
@@ -61,10 +66,73 @@ export default function Booking() {
 
   // ✅ Dummy trip data
   const tripList = [
-    { id: 1, name: "Trip to Karachi", type: "scheduled" },
-    { id: 2, name: "Trip to Lahore", type: "ongoing" },
-    { id: 3, name: "Trip to Islamabad", type: "completed" },
-    { id: 4, name: "Trip to Quetta", type: "scheduled" },
+    {
+      id: 1,
+      from: "Karachi",
+      type: "scheduled",
+      name: "John Doe",
+      to: "Lahore",
+      paymentMethod: "Credit Card",
+      date: "2024-06-15",
+      startTime: "10:00 AM",
+      endTime: "2:00 PM",
+      phone: "123-456-7890",
+      distance: "120km",
+      duration: "4h",
+      paymentIcon: <CreditCard />,
+      tripStatus: "Start Trip",
+      statusIcon: <FaLocationArrow />,
+    },
+    {
+      id: 2,
+      from: "Lahore",
+      type: "ongoing",
+      name: "Jane Smith",
+      to: "Islamabad",
+      paymentMethod: "PayPal",
+      date: "2024-06-16",
+      startTime: "11:00 AM",
+      endTime: "3:00 PM",
+      phone: "987-654-3210",
+      distance: "150km",
+      duration: "5h",
+      paymentIcon: <BsPaypal />,
+      tripStatus: "End Trip",
+      statusIcon: <MdOutlineCheckBoxOutlineBlank />,
+    },
+    {
+      id: 3,
+      from: "Islamabad",
+      type: "completed",
+      name: "Alice Johnson",
+      to: "Quetta",
+      paymentMethod: "Debit Card",
+      date: "2024-06-17",
+      startTime: "12:00 PM",
+      endTime: "4:00 PM",
+      phone: "456-789-0123",
+      distance: "200km",
+      duration: "6h",
+      paymentIcon: <CreditCard />,
+      tripStatus: "Completed",
+    },
+    {
+      id: 4,
+      from: "Quetta",
+      type: "scheduled",
+      name: "Bob Brown",
+      to: "Karachi",
+      paymentMethod: "Cash",
+      date: "2024-06-18",
+      startTime: "1:00 PM",
+      endTime: "5:00 PM",
+      phone: "321-654-0987",
+      distance: "180km",
+      duration: "5h",
+      paymentIcon: <IoMdCash />,
+      tripStatus: "Start Trip",
+      statusIcon: <FaLocationArrow />,
+    },
   ];
 
   // ✅ Apply filter based on tripInfo
@@ -218,13 +286,182 @@ export default function Booking() {
       >
         {visibleTrips.length > 0 ? (
           visibleTrips.map((trip) => (
-            <Box>
-                <Box>
-                    <Box>
-                        
-                    </Box>
+            <Box
+              key={trip.id}
+              sx={{
+                borderBottom: `1px solid ${lightTheme.palette.custom.blueGray}`,
+                padding: "10px 0",
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "5px",
+              }}
+            >
+              <Box>
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <Person />
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: "500",
+                      lineHeight: "24px",
+                    }}
+                  >
+                    {trip.name}
+                  </Typography>
                 </Box>
-                <Box></Box>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  <Call
+                    style={{
+                      fontSize: "16px",
+                      color: lightTheme.palette.custom.gray,
+                    }}
+                  />{" "}
+                  : {trip.phone}
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  <IoMdPin
+                    style={{
+                      fontSize: "16px",
+                      color: lightTheme.palette.custom.red,
+                    }}
+                  />{" "}
+                  From : {trip.from}
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  <IoMdPin
+                    style={{
+                      fontSize: "16px",
+                      color: lightTheme.palette.custom.green,
+                    }}
+                  />{" "}
+                  To : {trip.from}
+                  To: {trip.to}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  <CiCalendar />
+                  {trip.date}
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  <FaRegClock />
+                  Start: {trip.startTime}
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  <FaRegClock />
+                  End: {trip.endTime}
+                </Typography>
+
+                <Typography
+                  variant="h4"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    lineHeight: "20px",
+                    color: lightTheme.palette.custom.gray,
+                  }}
+                >
+                  {trip.paymentIcon}
+                  {trip.paymentMethod}
+                </Typography>
+                
+                <Button
+                  sx={() => {
+                    if (trip.tripStatus === "Completed") {
+                      return {
+                        marginTop: "10px",
+                        backgroundColor: lightTheme.palette.custom.green,
+                        color: lightTheme.palette.background.default,
+                        cursor: "not-allowed",
+                      };
+                    } else if (trip.tripStatus === "Start Trip") {
+                      return {
+                        marginTop: "10px",
+                        backgroundColor: lightTheme.palette.custom.blue,
+                        color: lightTheme.palette.background.default,
+                      };
+                    } else {
+                      return {
+                        marginTop: "10px",
+                        backgroundColor: lightTheme.palette.custom.red,
+                        color: lightTheme.palette.background.default,
+                      };
+                    }
+                  }}
+                >
+                  {trip.statusIcon} 
+                  {trip.tripStatus}
+                </Button>
+              </Box>
             </Box>
           ))
         ) : (
