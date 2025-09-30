@@ -1,5 +1,4 @@
 import { lightTheme, darkTheme } from "@/app/theme/theme";
-
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
@@ -10,22 +9,24 @@ export default function Vahicle() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "50px",
+          gap: "30px",
         }}
       >
         <Typography>Vehicle Information</Typography>
         <Box
           sx={{
             display: "flex",
-            justifyContent: "start",
-            gap: "40%",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: { xs: "flex-start", md: "space-between" },
+            gap: { xs: "30px", md: "15%" },
           }}
         >
+          {/* Left Section */}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "50px",
+              gap: "30px",
             }}
           >
             <Box>
@@ -51,6 +52,7 @@ export default function Vahicle() {
                 ABC-1234
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"
@@ -74,6 +76,7 @@ export default function Vahicle() {
                 sedrftgyhujicvbnm
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"
@@ -85,31 +88,23 @@ export default function Vahicle() {
               >
                 Insurance Expiry Date
               </Typography>
-              <Typography
-                variant="h4"
+              <Box
                 sx={{
-                  fontSize: "12px",
-                  fontWeight: "400",
-                  lineHeight: "24px",
-                  color: lightTheme.palette.custom.gray,
+                  border: `1px solid ${lightTheme.palette.custom.darkGray}`,
+                  padding: "10px 0",
+                  width: { xs: "100%", sm: "200px" },
+                  borderRadius: "5px",
                 }}
-              >
-                <Box
-                  sx={{
-                    border: `1px solid ${lightTheme.palette.custom.darkGray}`,
-                    padding: "10px 0",
-                    width: "200px",
-                    borderRadius: "5px",
-                  }}
-                ></Box>
-              </Typography>
+              ></Box>
             </Box>
           </Box>
+
+          {/* Right Section */}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "50px",
+              gap: "30px",
             }}
           >
             <Box>
@@ -135,6 +130,7 @@ export default function Vahicle() {
                 Sedan
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"
@@ -158,6 +154,7 @@ export default function Vahicle() {
                 SH234567
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"

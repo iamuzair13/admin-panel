@@ -1,5 +1,4 @@
-import { lightTheme, darkTheme } from "@/app/theme/theme";
-
+import { lightTheme } from "@/app/theme/theme";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
@@ -10,22 +9,33 @@ export default function Emergency() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "50px",
+          gap: { xs: "30px", md: "50px" },
         }}
       >
-        <Typography>Emegency</Typography>
+        <Typography
+          sx={{
+            fontSize: { xs: "18px", md: "22px" },
+            fontWeight: "600",
+          }}
+        >
+          Emergency
+        </Typography>
+
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            paddingRight: "200px",
+            paddingRight: { xs: "0px", md: "200px" },
+            gap: { xs: "30px", md: "0px" },
           }}
         >
+          {/* Left Column */}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "50px",
+              gap: { xs: "30px", md: "50px" },
             }}
           >
             <Box>
@@ -42,7 +52,7 @@ export default function Emergency() {
               <Typography
                 variant="h4"
                 sx={{
-                  fontSize: "12px",
+                  fontSize: { xs: "12px", md: "14px" },
                   fontWeight: "400",
                   lineHeight: "24px",
                   color: lightTheme.palette.custom.gray,
@@ -51,6 +61,7 @@ export default function Emergency() {
                 John Doe
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"
@@ -65,7 +76,7 @@ export default function Emergency() {
               <Typography
                 variant="h4"
                 sx={{
-                  fontSize: "12px",
+                  fontSize: { xs: "12px", md: "14px" },
                   fontWeight: "400",
                   lineHeight: "24px",
                   color: lightTheme.palette.custom.gray,
@@ -75,6 +86,8 @@ export default function Emergency() {
               </Typography>
             </Box>
           </Box>
+
+          {/* Right Column */}
           <Box>
             <Box>
               <Typography
@@ -90,7 +103,7 @@ export default function Emergency() {
               <Typography
                 variant="h4"
                 sx={{
-                  fontSize: "12px",
+                  fontSize: { xs: "12px", md: "14px" },
                   fontWeight: "400",
                   lineHeight: "24px",
                   color: lightTheme.palette.custom.gray,

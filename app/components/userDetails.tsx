@@ -2,6 +2,9 @@ import { Typography, Box } from "@mui/material";
 import { lightTheme } from "../theme/theme";
 import { useState } from "react";
 import Image from "next/image";
+import { FaRegEdit } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa6";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 interface User {
   name: string;
@@ -43,7 +46,6 @@ export default function UserDetails() {
 
   const [error, setError] = useState(false);
 
-  // Reusable Column Component
   const Column = ({
     title,
     headers,
@@ -53,14 +55,14 @@ export default function UserDetails() {
     headers: string[];
     renderRow: (user: User, index: number) => React.ReactNode;
   }) => (
-    <Box sx={{ mb: 2, gap: "20px", width: { xs: "100%", md: "40%" } }}>
+    <Box sx={{ mb: 2, width: { xs: "100%", md: "33%" } }}>
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
           mb: 2,
-          gap: { xs: "20px", md: "100px" },
-          width: "100%",
+          gap: { xs: "12px", md: "60px" },
+          flexWrap: "wrap",
         }}
       >
         <Typography
@@ -73,8 +75,9 @@ export default function UserDetails() {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            gap: { xs: "20px", md: "100px" },
+            justifyContent: "start",
+            gap: { xs: "12px", md: "60px" },
+            flexWrap: "wrap",
           }}
         >
           {headers.map((h, i) => (
@@ -98,8 +101,7 @@ export default function UserDetails() {
               display: "flex",
               justifyContent: "space-between",
               mb: 2,
-              gap: "20px",
-              width: "100%",
+              gap: "12px",
               flexWrap: "wrap",
             }}
           >
@@ -115,14 +117,13 @@ export default function UserDetails() {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           mb: 2,
-          gap: { xs: "20px", sm: "40px", md: "60px", lg: "100px" },
+          gap: { xs: "20px", sm: "30px", md: "40px", lg: "60px" },
           width: "100%",
-          flexDirection: { xs: "column", md: "row" },
         }}
       >
-        {/* Users Column */}
         <Column
           title="Users"
           headers={["Role", "Status"]}
@@ -185,7 +186,7 @@ export default function UserDetails() {
                 {user.role}
               </Typography>
               <Typography variant="body1" sx={{ fontSize: "14px" }}>
-                {user.status == "active" ? (
+                {user.status.toLowerCase() === "active" ? (
                   <span
                     style={{
                       backgroundColor: "green",
@@ -213,7 +214,6 @@ export default function UserDetails() {
           )}
         />
 
-        {/* Vehicle Column */}
         <Column
           title="Vehicle"
           headers={["Trips", "Earnings"]}
@@ -238,10 +238,9 @@ export default function UserDetails() {
           )}
         />
 
-        {/* Last Login Column */}
         <Column
           title="Last Login"
-          headers={["Earnings"]}
+          headers={["Actions"]}
           renderRow={(user) => (
             <>
               <Typography
@@ -253,9 +252,36 @@ export default function UserDetails() {
               >
                 {user.lastLogin}
               </Typography>
-              <Typography variant="body1" sx={{ fontSize: "14px" }}>
-                {user.Actions}
-              </Typography>
+              {user.role === "Admin" ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "10px",
+                    fontSize: "16px",
+                    width: "100px",
+                  }}
+                >
+                  <FaRegEdit />
+                  <FaRegEye />
+                  <RiDeleteBin6Line
+                    style={{
+                      color: lightTheme.palette.custom.red,
+                    }}
+                  />
+                </Box>
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "10px",
+                    fontSize: "16px",
+                    width: "100px",
+                  }}
+                >
+                  <FaRegEdit />
+                  <FaRegEye />
+                </Box>
+              )}
             </>
           )}
         />
@@ -263,3 +289,4 @@ export default function UserDetails() {
     </Box>
   );
 }
+    

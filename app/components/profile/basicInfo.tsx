@@ -1,5 +1,4 @@
-import { lightTheme, darkTheme } from "@/app/theme/theme";
-
+import { lightTheme } from "@/app/theme/theme";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
@@ -10,22 +9,33 @@ export default function BasicInfo() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "50px",
+          gap: { xs: "30px", md: "50px" },
         }}
       >
-        <Typography>Basic Information</Typography>
+        <Typography
+          sx={{
+            fontSize: { xs: "18px", md: "22px" },
+            fontWeight: "600",
+          }}
+        >
+          Basic Information
+        </Typography>
+
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            paddingRight: "200px",
+            paddingRight: { xs: "0px", md: "200px" },
+            gap: { xs: "30px", md: "0px" },
           }}
         >
+          {/* Left Section */}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "50px",
+              gap: { xs: "30px", md: "50px" },
             }}
           >
             <Box>
@@ -51,6 +61,7 @@ export default function BasicInfo() {
                 Admin User
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"
@@ -74,6 +85,7 @@ export default function BasicInfo() {
                 123-4567-89
               </Typography>
             </Box>
+
             <Box>
               <Typography
                 variant="h4"
@@ -98,6 +110,8 @@ export default function BasicInfo() {
               </Typography>
             </Box>
           </Box>
+
+          {/* Right Section */}
           <Box>
             <Box>
               <Typography

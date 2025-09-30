@@ -7,9 +7,7 @@ import { RiCalendarScheduleLine } from "react-icons/ri";
 import { FaLocationArrow, FaRegClock } from "react-icons/fa6";
 import { MdCheckBoxOutlineBlank, MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { useState } from "react";
-import { start } from "repl";
-import { Call, CreditCard, LocationCity, Payment, Person, Phone, PhoneAndroid, Pin } from "@mui/icons-material";
-import { IoCalendarNumber } from "react-icons/io5";
+import { Call, CreditCard, Person } from "@mui/icons-material";
 import { CiCalendar } from "react-icons/ci";
 import { BsPaypal } from "react-icons/bs";
 
@@ -64,7 +62,6 @@ export default function Booking() {
   const ongoing = () =>
     setFiltered(trips.filter((item) => item.type === "ongoing"));
 
-  // ✅ Dummy trip data
   const tripList = [
     {
       id: 1,
@@ -77,8 +74,6 @@ export default function Booking() {
       startTime: "10:00 AM",
       endTime: "2:00 PM",
       phone: "123-456-7890",
-      distance: "120km",
-      duration: "4h",
       paymentIcon: <CreditCard />,
       tripStatus: "Start Trip",
       statusIcon: <FaLocationArrow />,
@@ -94,8 +89,6 @@ export default function Booking() {
       startTime: "11:00 AM",
       endTime: "3:00 PM",
       phone: "987-654-3210",
-      distance: "150km",
-      duration: "5h",
       paymentIcon: <BsPaypal />,
       tripStatus: "End Trip",
       statusIcon: <MdOutlineCheckBoxOutlineBlank />,
@@ -111,8 +104,6 @@ export default function Booking() {
       startTime: "12:00 PM",
       endTime: "4:00 PM",
       phone: "456-789-0123",
-      distance: "200km",
-      duration: "6h",
       paymentIcon: <CreditCard />,
       tripStatus: "Completed",
     },
@@ -127,15 +118,12 @@ export default function Booking() {
       startTime: "1:00 PM",
       endTime: "5:00 PM",
       phone: "321-654-0987",
-      distance: "180km",
-      duration: "5h",
       paymentIcon: <IoMdCash />,
       tripStatus: "Start Trip",
       statusIcon: <FaLocationArrow />,
     },
   ];
 
-  // ✅ Apply filter based on tripInfo
   const visibleTrips =
     tripInfo === "allTrips"
       ? tripList
@@ -147,8 +135,10 @@ export default function Booking() {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: { xs: "flex-start", md: "center" },
+          gap: { xs: "15px", md: "0" },
         }}
       >
         <Box>
@@ -178,6 +168,7 @@ export default function Booking() {
               display: "flex",
               gap: "5px",
               height: "30px",
+              whiteSpace: "nowrap",
             }}
           >
             <IoMdAdd />
@@ -191,7 +182,9 @@ export default function Booking() {
         sx={{
           width: "100%",
           display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
           justifyContent: "start",
+          flexWrap: "wrap",
           gap: "20px",
         }}
       >
@@ -202,7 +195,7 @@ export default function Booking() {
               border: `1px solid ${lightTheme.palette.custom.blueGray}`,
               backgroundColor: lightTheme.palette.background.default,
               borderLeft: `5px solid ${item.color}`,
-              width: "33%",
+              width: { xs: "100%", sm: "48%", md: "32%" },
               borderRadius: "10px",
               padding: "30px 20px",
               gap: "15px",
@@ -235,7 +228,9 @@ export default function Booking() {
           sx={{
             width: "100%",
             display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
             justifyContent: "space-between",
+            flexWrap: "wrap",
             gap: "20px",
           }}
         >
@@ -244,17 +239,14 @@ export default function Booking() {
               key={index}
               sx={{
                 backgroundColor: lightTheme.palette.background.default,
-                width: "22%",
+                width: { xs: "100%", sm: "48%", md: "22%" },
                 borderRadius: "10px",
                 padding: "10px 20px",
                 gap: "15px",
                 display: "flex",
                 flexDirection: "column",
                 cursor: "pointer",
-                border:
-                  tripInfo === item.type
-                    ? `2px solid ${lightTheme.palette.custom.blue}`
-                    : "1px solid transparent",
+                border: "1px solid transparent",
               }}
               onClick={() => setTripInfo(item.type)}
             >
@@ -273,6 +265,7 @@ export default function Booking() {
         </Box>
       </Box>
 
+      {/* Trip List */}
       <Box
         sx={{
           backgroundColor: lightTheme.palette.background.default,
@@ -292,8 +285,9 @@ export default function Booking() {
                 borderBottom: `1px solid ${lightTheme.palette.custom.blueGray}`,
                 padding: "10px 0",
                 display: "flex",
+                flexDirection: { xs: "column", md: "row" },
                 justifyContent: "space-between",
-                gap: "5px",
+                gap: "10px",
               }}
             >
               <Box>
@@ -367,7 +361,6 @@ export default function Booking() {
                       color: lightTheme.palette.custom.green,
                     }}
                   />{" "}
-                  To : {trip.from}
                   To: {trip.to}
                 </Typography>
               </Box>
@@ -433,7 +426,7 @@ export default function Booking() {
                   {trip.paymentIcon}
                   {trip.paymentMethod}
                 </Typography>
-                
+
                 <Button
                   sx={() => {
                     if (trip.tripStatus === "Completed") {
@@ -458,7 +451,7 @@ export default function Booking() {
                     }
                   }}
                 >
-                  {trip.statusIcon} 
+                  {trip.statusIcon}
                   {trip.tripStatus}
                 </Button>
               </Box>
@@ -473,3 +466,4 @@ export default function Booking() {
     </Box>
   );
 }
+
