@@ -10,6 +10,7 @@ import {
   CartesianGrid,
   Pie,
   PieChart,
+  ResponsiveContainer,
 } from "recharts";
 
 
@@ -34,48 +35,48 @@ const data = [
 
 
 export const MyChart = () => (
-  <LineChart
-    width={1500}
-    height={300}
-    data={monthdata}
-    margin={{ top: 20, right: 20, bottom: 5, left: 0 }}
-  >
-    <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
+  <ResponsiveContainer width="100%" height={300}>
+    <LineChart
+      data={monthdata}
+      margin={{ top: 20, right: 20, bottom: 5, left: 0 }}
+    >
+      <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
 
-    {/* First Line */}
-    <Line
-      type="monotone"
-      dataKey="uv"
-      stroke="green"
-      strokeWidth={2}
-      name="Credit"
-    />
+      {/* Credit */}
+      <Line
+        type="monotone"
+        dataKey="uv"
+        stroke="green"
+        strokeWidth={2}
+        name="Credit"
+      />
 
-    {/* Second Line */}
-    <Line
-      type="monotone"
-      dataKey="pv"
-      stroke="orange"
-      strokeWidth={2}
-      name="Balance"
-    />
-    {/* Second Line */}
-    <Line
-      type="monotone"
-      dataKey="amt"
-      stroke="red"
-      strokeWidth={2}
-      name="Debit"
-    />
+      {/* Balance */}
+      <Line
+        type="monotone"
+        dataKey="pv"
+        stroke="orange"
+        strokeWidth={2}
+        name="Balance"
+      />
 
-    <XAxis dataKey="name" />
-    <YAxis
-      width={40}
-      label={{ value: "", position: "insideLeft", angle: -90 }}
-    />
-    {/* <Legend align="right" /> */}
-    <Tooltip />
-  </LineChart>
+      {/* Debit */}
+      <Line
+        type="monotone"
+        dataKey="amt"
+        stroke="red"
+        strokeWidth={2}
+        name="Debit"
+      />
+
+      <XAxis dataKey="name" />
+      <YAxis
+        width={40}
+        label={{ value: "", position: "insideLeft", angle: -90 }}
+      />
+      <Tooltip />
+    </LineChart>
+  </ResponsiveContainer>
 );
 
 export const RenderBarChart = () => (
