@@ -40,7 +40,6 @@ import Users from "../users/page";
 import Dashboard from "../dashboard/page";
 import { lightTheme } from "@/app/theme/theme";
 import { IoIosLogOut } from "react-icons/io";
-import { redirect } from "next/dist/server/api-utils";
 
 
 const drawerWidth = 240;

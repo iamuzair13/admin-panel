@@ -13,12 +13,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
+import { useRouter } from "next/navigation";
+
 import { FaCarSide, } from "react-icons/fa6";
 import {MenuList,
   MenuItem,
   ListItemIcon,
   ListItemText,
   Paper,
+  Button,
 } from "@mui/material";
 
 import { TbListDetails, TbReportSearch } from "react-icons/tb";
@@ -35,6 +38,7 @@ import Details from "../../details/page";
 import Profile from "../../profile/page";
 import Reports from "../../reports/page";
 import Dashboard from "../../dashboard/page";
+import { IoIosLogOut } from "react-icons/io";
 
 
 const drawerWidth = 240;
@@ -113,7 +117,8 @@ export default function DriverDashboard() {
 
 const [error, setError] = React.useState(false);
 
-const[page, setPage] = React.useState("Dashboard")
+const[page, setPage] = React.useState("dashboard")
+const router = useRouter();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -281,6 +286,13 @@ const[page, setPage] = React.useState("Dashboard")
             backgroundColor: theme.palette.custom.background.darkBlue,
             color: "text.white",
             borderRadius: "0px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            paddingTop: "10px",
+            paddingBottom: "20px",
+            borderTop: `1px solid ${theme.palette.custom.darkGray}`,
+            borderBottom: `1px solid ${theme.palette.custom.darkGray}`,
           }}
         >
           <MenuList sx={{}}>
@@ -397,7 +409,7 @@ const[page, setPage] = React.useState("Dashboard")
            
             <MenuItem
               component={Link}
-              href="/"
+              href="/home"
               sx={{
                 ":hover": {
                   backgroundColor: theme.palette.custom.background.blueGray,
@@ -417,6 +429,20 @@ const[page, setPage] = React.useState("Dashboard")
               >Admin</ListItemText>
             </MenuItem>
           </MenuList>
+           <Box sx={{ 
+                    paddingLeft: "12px",
+                   }} >
+                    <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" ,color: theme.palette.custom.white}}>
+                      <IoIosLogOut style={{
+                        fontSize: "20px",
+                      }}/>
+                      <Button sx={{ color: theme.palette.custom.white }} onClick={()=>{
+                        router.push('/');
+                      }} >
+                        Logout
+                      </Button>
+                    </Typography>
+                  </Box>
         </Paper>
       </Drawer>
       <Main open={open}>
